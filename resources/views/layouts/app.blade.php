@@ -84,6 +84,13 @@
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .status-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
         .badge-completed {
@@ -159,6 +166,16 @@
             font-size: 4rem;
             margin-bottom: 1rem;
             color: #dee2e6;
+        }
+        
+        .alert-success {
+            background-color: #d1e7dd;
+            color: #0f5132;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>

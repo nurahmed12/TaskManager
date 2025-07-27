@@ -16,7 +16,6 @@ class Task extends Model
         'user_id'
     ];
 
-    // Add boolean casting
     protected $casts = [
         'completed' => 'boolean'
     ];

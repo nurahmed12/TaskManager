@@ -34,7 +34,6 @@
             
             <div class="mb-4">
                 <div class="form-check form-switch">
-                    <!-- Fix: Add hidden input for false value -->
                     <input type="hidden" name="completed" value="0">
                     <input class="form-check-input" type="checkbox" role="switch" 
                            id="completed" name="completed" value="1" 

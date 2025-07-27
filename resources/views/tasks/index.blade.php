@@ -9,7 +9,7 @@
 </div>
 
 @if (session('success'))
-    <div class="alert alert-success bg-green-50 text-green-700 px-4 py-3 rounded-lg mb-6 flex items-center">
+    <div class="alert alert-success flex items-center">
         <i class="bi bi-check-circle-fill mr-2"></i> {{ session('success') }}
     </div>
 @endif
@@ -46,9 +46,19 @@
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    <span class="status-badge {{ $task->completed ? 'badge-completed' : 'badge-pending' }}">
-                                        {{ $task->completed ? 'Completed' : 'Pending' }}
-                                    </span>
+                                    <form action="{{ route('tasks.toggle', $task) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('PATCH')
+                                        <button type="submit" 
+                                                class="status-badge {{ $task->completed ? 'badge-completed' : 'badge-pending' }} d-inline-flex align-items-center"
+                                                title="Click to toggle status">
+                                            @if($task->completed)
+                                                <i class="bi bi-check-circle-fill mr-1"></i> Completed
+                                            @else
+                                                <i class="bi bi-clock-history mr-1"></i> Pending
+                                            @endif
+                                        </button>
+                                    </form>
                                 </td>
                                 <td class="text-center text-sm text-gray-500">
                                     {{ $task->created_at->format('M d, Y') }}
@@ -65,18 +75,6 @@
                                                 <i class="bi bi-trash mr-1"></i> Delete
                                             </button>
                                         </form>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <div class="flex justify-center items-center">
-                                        <span class="status-badge {{ $task->completed ? 'badge-completed' : 'badge-pending' }}">
-                                            {{ $task->completed ? 'Completed' : 'Pending' }}
-                                        </span>
-                                        @if($task->completed)
-                                            <i class="bi bi-check-circle-fill text-green-500 ml-2"></i>
-                                        @else
-                                            <i class="bi bi-clock-history text-yellow-500 ml-2"></i>
-                                        @endif
                                     </div>
                                 </td>
                             </tr>

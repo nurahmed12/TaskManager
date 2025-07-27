@@ -6,7 +6,7 @@
 </div>
 
 @if (session('success'))
-    <div class="alert alert-success bg-green-50 text-green-700 px-4 py-3 rounded-lg mb-6 flex items-center">
+    <div class="alert alert-success flex items-center">
         <i class="bi bi-check-circle-fill mr-2"></i> {{ session('success') }}
     </div>
 @endif

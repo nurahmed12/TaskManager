@@ -9,16 +9,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    // Task routes
     Route::resource('tasks', TaskController::class)->except('show');
+    Route::patch('/tasks/{task}/toggle', [TaskController::class, 'toggle'])->name('tasks.toggle'); // Fixed route definition
     Route::get('/dashboard', [TaskController::class, 'index'])->name('dashboard');
-});
-
-require __DIR__.'/auth.php';
-
-Route::middleware(['auth'])->group(function () {
-    // ... existing routes
 
     // Profile routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
+
+require __DIR__ . '/auth.php';
