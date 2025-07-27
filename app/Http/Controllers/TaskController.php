@@ -44,14 +44,21 @@ class TaskController extends Controller
     public function update(Request $request, Task $task)
     {
         $this->authorize('update', $task);
-        
+
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'completed' => 'boolean'
+            'completed' => 'boolean' // Ensure validation accepts boolean
         ]);
 
-        $task->update($request->all());
+        // Convert checkbox value to proper boolean
+        $completed = $request->has('completed') ? true : false;
+
+        $task->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'completed' => $completed
+        ]);
 
         return redirect()->route('tasks.index')->with('success', 'Task updated!');
     }

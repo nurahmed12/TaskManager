@@ -67,6 +67,18 @@
                                         </form>
                                     </div>
                                 </td>
+                                <td class="text-center">
+                                    <div class="flex justify-center items-center">
+                                        <span class="status-badge {{ $task->completed ? 'badge-completed' : 'badge-pending' }}">
+                                            {{ $task->completed ? 'Completed' : 'Pending' }}
+                                        </span>
+                                        @if($task->completed)
+                                            <i class="bi bi-check-circle-fill text-green-500 ml-2"></i>
+                                        @else
+                                            <i class="bi bi-clock-history text-yellow-500 ml-2"></i>
+                                        @endif
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

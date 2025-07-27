@@ -16,9 +16,11 @@ class Task extends Model
         'user_id'
     ];
 
-    /**
-     * Get the user that owns the task.
-     */
+    // Add boolean casting
+    protected $casts = [
+        'completed' => 'boolean'
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
